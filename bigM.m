@@ -39,7 +39,7 @@ while true
         %zj - cj without solution value
         zc = zjcj(1:n+4);
         %get entering variable and its column index
-        [entering_val,pvt_col] = min(zc)
+        [entering_val,pvt_col] = min(zc);
         if(all(A(:, pvt_col) < 0))
             fprintf("LPP is unbounded\n");
             break;
@@ -58,11 +58,11 @@ while true
                 end
             end
             %get leaving variable and its row index
-            [leaving_val, pvt_row] = min(ratio)
+            [leaving_val, pvt_row] = min(ratio);
             %update basic variables
             bv(pvt_row) = pvt_col;
             %get pivot key
-            pvt_key = A(pvt_row,pvt_col)
+            pvt_key = A(pvt_row,pvt_col);
             %row operation -> divide row by pivot key
             A(pvt_row,:) = A(pvt_row,:)./pvt_key;
             %convert all values of pivot column to 0 except key with row operation R[i] = R[i] - R[i,pvt_col]*R[pivot_row]
